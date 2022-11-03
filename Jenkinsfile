@@ -44,6 +44,7 @@ pipeline {
                 script{
                     container('maven') {
                         sh('ls')
+                        sh('mvn install')
                     
 
                     }
