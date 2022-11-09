@@ -44,11 +44,10 @@ pipeline {
                 script{
                     container('maven') {
                         sh('ls')
-                        sh('mvn install')
+                        sh('mvn install -Dmaven.repo.remote=https://artifactory.bankdata.eficode.io/artifactory/maven-central/')
                     
-
-                    }
-                }
+                        }
+                     }
                 }
             }    
 

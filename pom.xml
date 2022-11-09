@@ -109,7 +109,7 @@
         <extensions>true</extensions>
         <configuration>
           <serverId>maven-central</serverId>
-          <nexusUrl>https://repo.maven.apache.org/maven2/</nexusUrl>
+          <nexusUrl>https://artifactory.bankdata.eficode.io/artifactory/maven-central/</nexusUrl>
           <autoReleaseAfterClose>true</autoReleaseAfterClose>
         </configuration>
       </plugin>
