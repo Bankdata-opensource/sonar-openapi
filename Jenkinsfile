@@ -1,5 +1,5 @@
-def ARTIFACTORY_ID = 'Artifactory'
-def BOT_ID = 'dpt-admin-bot'
+ def ARTIFACTORY_ID = 'Artifactory'
+    def BOT_ID = 'son-sonaropenapi-artifactory-bot'
 pipeline {
     agent {
         kubernetes {
@@ -26,25 +26,32 @@ pipeline {
     }
 
     environment {
-        ARTIFACTORY_ID = 'Artifactory'
-        BOT_ID = 'dpt-admin-bot'
-       
+      /*  ARTIFACTORY_CREDS = with.credentials('NexusArtifactoryLogin')
+        ARTIFACTORY_USER = "$NEXUS_CREDS_USR"
+        ARTIFACTORY_PASSWORD = "$NEXUS_CREDS_PSW"
+       */
     }
 
     stages {
         stage('Build') {
-            steps {
+            steps {BOT_USER
                 sh 'mvn --version'
 
             }
         }
+            
 
         stage('Setup') {
             steps {
                 script{
                     container('maven') {
-                        sh('ls')
-                        sh('mvn install -Dmaven.repo.remote=https://artifactory.bankdata.eficode.io/artifactory/maven-central/')
+                        withCredentials([usernamePassword(credentialsId: "${BOT_ID}", usernameVariable: 'ARTIFACTORY_USER', passwordVariable: 'ARTIFACTORY_PASSWORD')]) {
+                                echo USERNAME
+                            // or inside double quotes for string interpolation
+                                echo "username is $USERNAME"
+                                sh('mvn -s settings.xml package')
+
+                        }
                     
                         }
                      }
