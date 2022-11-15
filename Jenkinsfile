@@ -33,14 +33,7 @@ pipeline {
     }
 
     stages {
-        stage('Build') {
-            steps {BOT_USER
-                sh 'mvn --version'
-
-            }
-        }
-            
-
+        
         stage('Setup') {
             steps {
                 script{
