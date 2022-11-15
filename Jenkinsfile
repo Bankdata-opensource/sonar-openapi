@@ -1,4 +1,4 @@
- def ARTIFACTORY_ID = 'Artifactory'
+def ARTIFACTORY_ID = 'Artifactory'
     def BOT_ID = 'son-sonaropenapi-artifactory-bot'
 pipeline {
     agent {
@@ -25,33 +25,20 @@ pipeline {
         }
     }
 
-    environment {
-      /*  ARTIFACTORY_CREDS = with.credentials('NexusArtifactoryLogin')
-        ARTIFACTORY_USER = "$NEXUS_CREDS_USR"
-        ARTIFACTORY_PASSWORD = "$NEXUS_CREDS_PSW"
-       */
-    }
-
     stages {
-        
         stage('Setup') {
             steps {
-                script{
+                script {
                     container('maven') {
                         withCredentials([usernamePassword(credentialsId: "${BOT_ID}", usernameVariable: 'ARTIFACTORY_USER', passwordVariable: 'ARTIFACTORY_PASSWORD')]) {
                                 echo ARTIFACTORY_USER
-                            // or inside double quotes for string interpolation
+                                // or inside double quotes for string interpolation
                                 echo "username is $ARTIFACTORY_USER"
                                 sh('mvn -s settings.xml package')
-
                         }
-                    
-                        }
-                     }
+                    }
                 }
-            }    
-
+            }
+        }
     }
-
-
 }
