@@ -46,9 +46,9 @@ pipeline {
                 script{
                     container('maven') {
                         withCredentials([usernamePassword(credentialsId: "${BOT_ID}", usernameVariable: 'ARTIFACTORY_USER', passwordVariable: 'ARTIFACTORY_PASSWORD')]) {
-                                echo USERNAME
+                                echo ARTIFACTORY_USER
                             // or inside double quotes for string interpolation
-                                echo "username is $USERNAME"
+                                echo "username is $ARTIFACTORY_USER"
                                 sh('mvn -s settings.xml package')
 
                         }
