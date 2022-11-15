@@ -32,9 +32,11 @@ pipeline {
                     container('maven') {
                         withCredentials([usernamePassword(credentialsId: "${BOT_ID}", usernameVariable: 'ARTIFACTORY_USER', passwordVariable: 'ARTIFACTORY_PASSWORD')]) {
                                 echo ARTIFACTORY_USER
+                                sh("java -version")
                                 // or inside double quotes for string interpolation
                                 echo "username is $ARTIFACTORY_USER"
                                 sh('mvn -s settings.xml package')
+                                
                         }
                     }
                 }
