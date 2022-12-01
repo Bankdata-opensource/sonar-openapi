@@ -74,7 +74,7 @@
     <assertj-core.version>3.6.1</assertj-core.version>
     <commons.lang.version>2.6</commons.lang.version>
     <junit.version>4.12</junit.version>
-    <mockito.version>1.10.19</mockito.version>
+    <mockito.version>2.0.2-beta</mockito.version>
     <sonar.version>6.7.4</sonar.version>
     <sonar.analyzer.commons.version>1.6.0.219</sonar.analyzer.commons.version>
     <sonar.orchestrator.version>3.15.2.1322</sonar.orchestrator.version>
