@@ -24,7 +24,7 @@ pipeline {
                   '''
         }
     }
-
+//køre 
     stages {
         stage('Setup') {
             steps {
