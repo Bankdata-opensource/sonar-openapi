@@ -20,7 +20,7 @@ pipeline {
                   image: artifactory.bankdata.eficode.io/all-docker-centrals/library/maven:latest
                   command: ["sleep", "inf"]
                 - name: jnlp
-                  image: artifactory.bankdata.eficode.io/all-docker-centrals/jenkins/jnlp-slave:latest
+                  image: artifactory.bankdata.eficode.io/all-docker-release/jenkins/inbound-agent:latest
                   '''
         }
     }
