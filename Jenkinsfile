@@ -16,14 +16,17 @@ pipeline {
                 imagePullSecrets:
                 - name: artif1
                 containers:
-                - name: maven
+                - name: mavenbak
                   image: artifactory.bankdata.eficode.io/all-docker-centrals/library/maven:latest
                   command: ["sleep", "inf"]
                 - name: jnlp
                   image: artifactory.bankdata.eficode.io/all-docker-release/jenkins/inbound-agent:latest
+                - name: maven
+                  image: artifactory.bankdata.eficode.io/docker-hub//library/maven:3.8.6-openjdk-8
+                  command: ["sleep", "inf"]
                   '''
         }
-    }
+    } 
 //køre 
     stages {
         stage('Setup') {
